@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using APBD_cw3.DAL;
@@ -18,30 +19,32 @@ namespace APBD_cw3.Controllers
         {
             _dbService = dbService;
         }
-
-        public String GetStudent()
-        {
-            return "Kowalski, Malewski, Andrzejewski";
-        }
-
         [HttpGet("{id}")]
             public IActionResult GetStudent(int id)
-        {
-            if(id==1)
+        {         
+            if (id == 1)
             {
                 return Ok("Kowalski");
-            }else if (id == 2)
+            }
+            else if (id == 2)
             {
                 return Ok("Malewski");
             }
-            return NotFound("Nie znaleziono studenta");
+            else return NotFound();        
         }
 
         [HttpGet]
-            public IActionResult GetStudents(string orderBy)
+            public IActionResult GetStudents()
         {
             return Ok(_dbService.GetStudents());
         }
+        [HttpGet("{number}/enrollments")]
+        public IActionResult GetEnrollment(string number)
+        {
+            return Ok(_dbService.GetEnrollments(number));
+        }
+
+
         [HttpPost]
         public IActionResult CreateStudent(Student student)
         {
@@ -50,7 +53,14 @@ namespace APBD_cw3.Controllers
             student.IndexNumber = $"s{new Random().Next(1, 20000)}";
             return Ok(student);
         }
-        [HttpDelete]
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateStudent(int id, Student student)
+        {
+            return Ok("Aktualizowano :)");
+        }
+
+        [HttpDelete("{id}")]
         public IActionResult DeleteStudents(int id)
         {
             //... todo
@@ -68,6 +78,5 @@ namespace APBD_cw3.Controllers
             else return NotFound("Nie ma studenta o tym id");
         }
        
-
     }
 }
