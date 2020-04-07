@@ -11,6 +11,13 @@ namespace APBD_cw3.DAL
     {
         public IEnumerable<Student> GetStudents();
         public IEnumerable<Enrollment> GetEnrollments(string number);
-      
+
+        public Studies GetStudies(String str);
+        public Enrollment GetEnrollment(string study, int semester);
+
+        public void Register(Student student, int studyId);
+        public void Promote(string studies, int semenster);
+
+
     } 
 }

@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace APBD_cw3.Models
+namespace APBD_cw3.DTOs.Response
 {
-    public class Enrollment
+    public class EnrollStudentResponse
     {
-        public int IdEnrollment { get; set; }
+        public string LastName { get; set; }
         public int Semester { get; set; }
-        public Studies Study { get; set; }
         public DateTime StartDate { get; set; }
     }
 }
