@@ -100,7 +100,7 @@ namespace APBD_cw3.DAL
 
         }
 
-        public void Register(Student XD, int studyId)
+        public void Register(Student student, int studyId)
         {
             using(var conection = new SqlConnection(_connection))
             using (var command = new SqlCommand())
@@ -121,10 +121,10 @@ namespace APBD_cw3.DAL
                                         END
                                         INSERT INTO Student values (@_index, @_firstname, @_lastname, @_birthdate, @_enrollment)";
                 command.Parameters.AddWithValue("_study", studyId);
-                command.Parameters.AddWithValue("_index", XD.IndexNumber);
-                command.Parameters.AddWithValue("_firstName", XD.FirstName);
-                command.Parameters.AddWithValue("_lastName", XD.LastName);
-                command.Parameters.AddWithValue("_birthDate", XD.BirthDate);
+                command.Parameters.AddWithValue("_index", student.IndexNumber);
+                command.Parameters.AddWithValue("_firstName", student.FirstName);
+                command.Parameters.AddWithValue("_lastName", student.LastName);
+                command.Parameters.AddWithValue("_birthDate", student.BirthDate);
                 command.ExecuteNonQuery();
                 try
                 {
@@ -134,7 +134,6 @@ namespace APBD_cw3.DAL
                     transact.Rollback();
                 }
             }
-
         }
         public Enrollment GetEnrollment(string study, int semester)
         {
