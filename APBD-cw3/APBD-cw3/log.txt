@@ -1,0 +1,23 @@
+09.04.2020 14:56:46GET
+/api/students/
+{
+"IndexNumber": "s1234",
+"FirstName": "Andrzej",
+"LastName": "Malewski",
+"BirthDate": "1993-03-30",
+"Studies": "Tworzenie AI" 
+}
+Microsoft.AspNetCore.Http.QueryCollection
+---------
+Time: 09.04.2020 14:58:36
+Method: GET
+Request: /api/students/
+{
+"IndexNumber": "s1234",
+"FirstName": "Andrzej",
+"LastName": "Malewski",
+"BirthDate": "1993-03-30",
+"Studies": "Tworzenie AI" 
+}
+Microsoft.AspNetCore.Http.QueryCollection
+---------

@@ -38,6 +38,7 @@ namespace APBD_cw3.Controllers
         {
             return Ok(_dbService.GetStudents());
         }
+
         [HttpGet("{number}/enrollments")]
         public IActionResult GetEnrollment(string number)
         {

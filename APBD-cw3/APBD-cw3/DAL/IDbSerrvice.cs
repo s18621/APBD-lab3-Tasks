@@ -18,6 +18,8 @@ namespace APBD_cw3.DAL
         public void Register(Student student, int studyId);
         public void Promote(string studies, int semenster);
 
+        public bool checkIndex(String index);
+
 
     } 
 }

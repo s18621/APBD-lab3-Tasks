@@ -32,7 +32,6 @@ namespace APBD_cw3.DAL
                     st.LastName = dr["LastName"].ToString();
                     st.BirthDate = DateTime.Parse(dr["BirthDate"].ToString());
                     st.IndexNumber = dr["IndexNumber"].ToString();
-
                     _students.Add(st);
                 }
             }
@@ -200,6 +199,30 @@ namespace APBD_cw3.DAL
                 CLOSE cur;
                 END;
                 */
+        }
+        public bool checkIndex(string index)
+        {
+            using (var connection = new SqlConnection(_connection))
+            using (var command = new SqlCommand())
+            {
+                command.Connection = connection;
+                command.CommandText = "SELECT 1 FROM student WHERE indexNumber = @index";
+                command.Parameters.AddWithValue("index", index);
+                connection.Open();
+                var dr = command.ExecuteReader();
+                dr.Read();
+                if (dr.HasRows)
+                {
+                    dr.Close();
+                    return true;
+                }
+                else
+                {
+                    dr.Close();
+                    return false;
+                }
+
+            }
         }
     }
 }
